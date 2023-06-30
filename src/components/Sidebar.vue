@@ -79,7 +79,7 @@ const selectedPage = (selectedBtn: Button) => {
 <style lang="scss">
 .sidebar {
   background: $primary-n-80;
-  width: 60px;
+  width: $sidebar-width;
   height: 100%;
   position: absolute;
   padding-top: 8px;

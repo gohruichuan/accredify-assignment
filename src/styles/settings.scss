@@ -8,3 +8,12 @@
 // @use 'vuetify/settings' with (
 //   $color-pack: false
 // );
+
+
+.v-btn p {
+    text-transform: capitalize !important;
+}
+
+.v-btn--size-default {
+    min-width: 60px;
+}
