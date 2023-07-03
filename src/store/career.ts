@@ -13,13 +13,14 @@ interface CareerGoal {
 
 export const useCareerGoal = defineStore('careerGoal', {
   state: () => ({
-    careerGoal: [] as CareerGoal[]
+    careerGoalData: [] as CareerGoal[]
   }),
   actions: {
     async getCareerGoal(){
-      const careerRes = await careerAPI.getCareerGoal()
-      this.careerGoal = careerRes?.data
-      console.warn("this.careerGoal ", this.careerGoal);
+      const careerRes: any = await careerAPI.getCareerGoal()
+      console.warn("careerRes.data ", careerRes.data);
+      this.careerGoalData = careerRes.data
+      console.warn("this.careerGoalData ", this.careerGoalData);
     }
   }
 })
