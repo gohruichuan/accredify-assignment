@@ -10,8 +10,8 @@
 // );
 
 
-.v-btn p {
-    text-transform: capitalize !important;
+.v-btn .v-btn__content {
+    text-transform: initial !important;
 }
 
 .v-btn--size-default {
