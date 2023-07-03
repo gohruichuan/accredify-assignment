@@ -32,7 +32,7 @@ const profileStore = useProfileStore();
 if(localStorage.getItem('jwtToken'))
   await profileStore.verify()
 else
-  profileStore.isLoggedIn = false;
+  profileStore.clearProfileDetails()
 
 // redirect to dashboard if ALREADY logged in
 if(to.path === '/login' && profileStore.isLoggedIn){
