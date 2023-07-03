@@ -2,7 +2,6 @@
 VApp
   Login(v-if="!isLoggedIn")
   Sidebar
-  p {[ profileStore.id ]}
   VMain
     Header
     router-view

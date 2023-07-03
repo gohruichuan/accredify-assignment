@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { reactive } from "vue";
 import { ref } from "vue";
+import { useProfileStore } from "@/store/profile";
+
+const profileStore = useProfileStore();
 
 interface Button {
   name: string;
@@ -46,6 +49,7 @@ const buttons: Button[] = reactive([
 ]);
 
 const selectedPage = (selectedBtn: Button) => {
+  if (!profileStore.isLoggedIn) return;
   selectedBtn.selected = true;
 
   buttons.map((btn) => {
@@ -63,7 +67,8 @@ const selectedPage = (selectedBtn: Button) => {
 
   div(v-for="btn in buttons")
     VBtn.nav-btn(
-      :class=`{"selected" : btn.selected}`
+      v-if="!profileStore.isLoggedIn && btn.name === 'Home' || profileStore.isLoggedIn"
+      :class=`{"selected" : btn.selected,}`
       variant="flat"
       :title="btn.name"
       :to="btn.path"
