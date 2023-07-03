@@ -10,7 +10,7 @@ interface Button {
   selected: boolean;
 }
 
-const logo: string = new URL("../assets/logo.jpg", import.meta.url).href;
+const logo: string = new URL("@/assets/logo.jpg", import.meta.url).href;
 
 const buttons: Button[] = reactive([
   {

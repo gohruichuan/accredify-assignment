@@ -1,14 +1,24 @@
 <template lang="pug">
 VApp
+  Login(v-if="!isLoggedIn")
   Sidebar
+  p {[ profileStore.id ]}
   VMain
     Header
     router-view
+
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue";
 import Sidebar from "@/components/Sidebar.vue";
 import Header from "@/components/header/Header.vue";
+import Login from "@/views/Login.vue";
+
+import { useProfileStore } from "@/store/profile";
+
+const profileStore = useProfileStore();
+const isLoggedIn = computed(() => profileStore.isLoggedIn);
 </script>
 
 <style lang="scss">
