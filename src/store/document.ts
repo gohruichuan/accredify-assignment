@@ -32,7 +32,6 @@ export const useDocumentStore = defineStore('document', {
       const docRes = await documentAPI.getDocuments(params)
       this.documents = docRes?.data
       console.warn("this.documents ", this.documents);
-
     }
   }
 })
