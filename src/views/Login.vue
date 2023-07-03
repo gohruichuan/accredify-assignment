@@ -11,8 +11,11 @@
 </template>
 
 <script lang="ts" setup>
-import profileAPI from "@/apis/profile";
+import { useProfileStore } from "@/store/profile";
 import { onMounted } from "vue";
+import { getJWT } from "@/scripts/utils";
+
+const profileStore = useProfileStore();
 const username = "geraldgoh@gmail.com";
 
 const logo: string = new URL("@/assets/logo.jpg", import.meta.url).href;
@@ -23,11 +26,18 @@ const login = async () => {
   };
 
   try {
-    await profileAPI.login(loginParams);
+    await profileStore.login(loginParams);
   } catch (err) {
     console.error(err);
   }
 };
+
+onMounted(() => {
+  if (getJWT()) {
+    return;
+  }
+  console.warn("entered login page");
+});
 </script>
 
 <style lang="scss">

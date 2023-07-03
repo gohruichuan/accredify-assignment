@@ -2,42 +2,42 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useProfileStore } from "@/store/profile";
 
-const validateLogin = (to: any, from: any , next: any) => {
-const profileStore = useProfileStore();
-
-if(localStorage.getItem('jwtToken'))
-  profileStore.isLoggedIn = true;
- else
-  profileStore.isLoggedIn = false;
-
-// redirect to dashboard if ALREADY logged in
-if(to.path === '/login' && profileStore.isLoggedIn)
-  next('/');
-
-// redirect to dashboard if logged in
-if(profileStore.isLoggedIn)
-  next();
-else if(to.path !== '/login')
-  next('/login'); // go to '/login';
-
-};
-
 const routes = [
   {
     path: '/',
     component: () => import('@/views/Home.vue'),
-    beforeEnter : validateLogin,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/login',
-    component: () => import('@/views/Login.vue'),
-    beforeEnter : validateLogin,
+    component: () => import('@/views/Login.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: '404',
+    component: () => import('@/views/Error404.vue')
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes
+})
+
+router.beforeResolve(async (to) => {
+const profileStore = useProfileStore();
+
+if(localStorage.getItem('jwtToken'))
+  await profileStore.verify()
+else
+  profileStore.isLoggedIn = false;
+
+// redirect to dashboard if ALREADY logged in
+if(to.path === '/login' && profileStore.isLoggedIn){
+  return '/'
+}
 })
 
 export default router

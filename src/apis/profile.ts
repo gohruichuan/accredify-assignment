@@ -1,33 +1,21 @@
 import axios from "axios";
-import { useProfileStore } from "@/store/profile";
-
-interface userDetails{
-  userId: number,
-  username: string
-}
-
-interface loginRes{
-  data: {
-    jwtToken: string,
-    userDetails: userDetails
-  }
-}
+import { getJWT } from '@/scripts/utils'
 
 const login = async(params = {}) =>{
   try{
-    const profileStore = useProfileStore()
-    const loginRes: loginRes = await axios.post("http://localhost:4000/login", params)
-    profileStore.id = loginRes.data.userDetails.userId;
-    profileStore.isLoggedIn = true;
-    localStorage.setItem("jwtToken", loginRes.data.jwtToken);
-
-    console.warn("profileStore ", profileStore);
-
-    window.location.href = '/'
+    return await axios.post("http://localhost:4000/login", params)
   }
   catch(err){
     console.error(err)
   }
 }
 
-export default { login }
+const verify = async() =>{
+  try{
+    return await axios.get("http://localhost:4000/login/verify", { headers: { Authorization: `Bearer ${getJWT()}` }})
+  }
+  catch(err){
+    console.error(err)
+  }
+}
+export default { login, verify }
