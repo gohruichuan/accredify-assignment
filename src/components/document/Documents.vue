@@ -1,5 +1,5 @@
 <template lang="pug">
-.documents
+.documents(v-if="documents.length")
   div.title
     h4.mb-2 Recent Documents
     h6.allDocBtn View All Documents

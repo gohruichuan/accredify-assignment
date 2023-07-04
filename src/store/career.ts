@@ -18,8 +18,7 @@ export const useCareerGoal = defineStore('careerGoal', {
   actions: {
     async getCareerGoal(){
       const careerRes: any = await careerAPI.getCareerGoal()
-      console.warn("careerRes.data ", careerRes.data);
-      this.careerGoalData = careerRes.data
+      this.careerGoalData = careerRes?.data
       console.warn("this.careerGoalData ", this.careerGoalData);
     }
   }

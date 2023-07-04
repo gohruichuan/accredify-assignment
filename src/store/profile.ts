@@ -12,7 +12,8 @@ interface profileDetails{
   userId: number,
   username: string,
   name: string,
-  isLoggedIn: boolean
+  isLoggedIn: boolean,
+  isPersonal: boolean
 }
 
 export const useProfileStore = defineStore('profile', {
@@ -20,18 +21,19 @@ export const useProfileStore = defineStore('profile', {
     id: 0 as number,
     username: '' as string,
     name: '' as string,
-    isLoggedIn: false as boolean
+    isLoggedIn: false as boolean,
+    isPersonal: false as boolean
   }),
   actions: {
     async getProfileData(){
       const docStore = useDocumentStore()
       const careerGoal = useCareerGoal()
 
+      const apiCalls = [docStore.getDocuments()]
+      if(this.isPersonal) apiCalls.push(careerGoal.getCareerGoal())
+
       Promise.all(
-        [
-          docStore.getDocuments(),
-          careerGoal.getCareerGoal()
-        ]
+        apiCalls
       )
     },
     setProfileDetails(res: profileDetails){
@@ -39,11 +41,13 @@ export const useProfileStore = defineStore('profile', {
       this.username = res.username;
       this.name = res.name;
       this.isLoggedIn = true;
+      this.isPersonal = true
     },
     clearProfileDetails(){
       this.id = 0
       this.username = this.name = "";
       this.isLoggedIn = false;
+      this.isPersonal = false;
       localStorage.removeItem("jwtToken");
     },
     async verify() {

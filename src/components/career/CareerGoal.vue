@@ -1,5 +1,5 @@
 <template lang="pug">
-.career
+.career(v-if="isPersonal && careerName && progress")
   h4.mb-2 Career Goal
   div.container
     h6.mb-6 Your Progress
@@ -15,16 +15,26 @@
 import { ref, watchEffect } from "vue";
 import CircleProgress from "@/components/career/CircleProgress.vue";
 import { useCareerGoal } from "@/store/career";
+import { useProfileStore } from "@/store/profile";
 
 const careerGoalStore: any = useCareerGoal();
+const profileStore: any = useProfileStore();
+
 let progress = ref("");
 let careerName = ref("");
+let isPersonal = ref(false);
 
 watchEffect(() => {
-  if (careerGoalStore.careerGoalData.length) {
+  if (careerGoalStore.careerGoalData && careerGoalStore.careerGoalData.length) {
     const data = careerGoalStore.careerGoalData[0];
     progress.value = data.progress + "%";
     careerName.value = data.name;
+  }
+});
+
+watchEffect(() => {
+  if (profileStore.isPersonal) {
+    isPersonal.value = profileStore.isPersonal;
   }
 });
 </script>

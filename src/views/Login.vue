@@ -4,10 +4,11 @@
     VImg.logo.mb-2(
       :src="logo"
     )
-    p.mb-2 Login as {{username}}
-    VBtn.loginBtn(
-      @click="login")
-      p Login
+    div(v-for="data in usernames")
+      p.mb-2 Login as {{data.username}}
+      VBtn.loginBtn.mb-5(
+        @click="login(data.username)")
+        p Login {{data.isPersonal? "Personal User" : "Managed User"}}
 </template>
 
 <script lang="ts" setup>
@@ -16,11 +17,15 @@ import { onMounted } from "vue";
 import { getJWT } from "@/scripts/utils";
 
 const profileStore = useProfileStore();
-const username = "geraldgoh@gmail.com";
+
+const usernames = [
+  { isPersonal: true, username: "geraldgoh@gmail.com" },
+  { isPersonal: false, username: "batmantan@gmail.com" },
+];
 
 const logo: string = new URL("@/assets/logo.jpg", import.meta.url).href;
 
-const login = async () => {
+const login = async (username: string) => {
   const loginParams = {
     username: username,
   };
