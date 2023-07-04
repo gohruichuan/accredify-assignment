@@ -3,7 +3,7 @@ import { getJWT } from '@/scripts/utils'
 
 const getCareerGoal = async() =>{
   try{
-    return await axios.get("http://localhost:4000/career-goals", { headers: { Authorization: `Bearer ${getJWT()}` }})
+    return await axios.get("https://api-accredify-d799d4385f74.herokuapp.com/career-goals", { headers: { Authorization: `Bearer ${getJWT()}` }})
   }
   catch(err){
     console.error(err)

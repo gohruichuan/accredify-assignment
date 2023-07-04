@@ -8,7 +8,7 @@ interface documentParams
 }
 const getDocuments = async(params: documentParams) =>{
   try{
-    return await axios.get("http://localhost:4000/document-module/identities/1/documents", { headers: { Authorization: `Bearer ${getJWT()}` }, params: params
+    return await axios.get("https://api-accredify-d799d4385f74.herokuapp.com/document-module/identities/1/documents", { headers: { Authorization: `Bearer ${getJWT()}` }, params: params
   })
   }
   catch(err){
