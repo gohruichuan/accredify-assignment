@@ -45,7 +45,7 @@ App
 3) This JWT token (jwtToken) will allow user to auto login the next time he arrive to the main page
 ```
 
-### Frontend State Management
+### Frontend State Management using Pinia
 
 ```
 1) After loggin in
