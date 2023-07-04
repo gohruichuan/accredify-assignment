@@ -26,7 +26,7 @@ See [Live Demo](https://main.dwa9u6sbradb9.amplifyapp.com/login).
 
 # Frontend
 
-### Frontend View and Components
+### Frontend Components Structure
 
 ```
 App
@@ -37,12 +37,20 @@ App
 
 ```
 
-### Frontend auto login
+### Frontend Auto Login Feature using JWT Token
 
 ```
 1) After loggin in for the first time
 2) The backend API will sign a JWT Token stored on the frontend localstorage key name: jwtToken
 3) This JWT token (jwtToken) will allow user to auto login the next time he arrive to the main page
+```
+
+### Frontend State Management
+
+```
+1) After loggin in
+2) Call Documents and Career Goals API
+3) Data returned are stored in Pinia state managements (src\store)
 ```
 
 # Backend Nodejs API
