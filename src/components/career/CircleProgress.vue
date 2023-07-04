@@ -8,7 +8,7 @@ VProgressCircular.mb-6(
 
 <script lang="ts" setup>
 const props = defineProps({
-  progress: { type: Number, default: 0 },
+  progress: { type: String, default: "" },
 });
 </script>
 

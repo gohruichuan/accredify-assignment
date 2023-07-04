@@ -1,6 +1,6 @@
 <template lang="pug">
 .career
-  h1.mb-2 Career Goal
+  h4.mb-2 Career Goal
   div.container
     h6.mb-6 Your Progress
     CircleProgress.mb-6(
@@ -27,43 +27,19 @@ watchEffect(() => {
     careerName.value = data.name;
   }
 });
-
-// const progress = computed(() => {
-//   return useCareerGoal.careerGoalData && useCareerGoal.careerGoalData[0].progress;
-// });
 </script>
 
 <style lang="scss">
 .career {
   .container {
+    min-height: 433px;
+
     display: flex;
     padding: 32px 40px;
     flex-direction: column;
     align-items: center;
     flex: 1 0 0;
     align-self: stretch;
-
-    // .v-progress-circular {
-    //   width: 180px !important;
-    //   height: 180px !important;
-    //   .v-progress-circular__underlay,
-    //   .v-progress-circular__overlay {
-    //     stroke-width: 3px;
-    //   }
-    //   .v-progress-circular__overlay {
-    //     stroke-linecap: round;
-    //     stroke: $primary-p-50;
-    //   }
-
-    //   .v-progress-circular__content {
-    //     p {
-    //       color: $purple-p-70;
-    //       font-size: 28px !important;
-    //       font-weight: 700 !important;
-    //       line-height: 44px !important;
-    //     }
-    //   }
-    // }
 
     .insightsBtn {
       cursor: pointer;

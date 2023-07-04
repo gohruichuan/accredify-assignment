@@ -4,20 +4,22 @@ VContainer.home
   p Manage your documents issued by SMU Academy or track your career goal.
   .userData
     Career
-    Career
+    Documents
 </template>
 
 <script lang="ts" setup>
 import { useProfileStore } from "@/store/profile";
-import Career from "@/components/career/Career.vue";
+import Career from "@/components/career/CareerGoal.vue";
+import Documents from "@/components/document/Documents.vue";
 
 const profileStore = useProfileStore();
 </script>
 
 <style lang="scss">
 .home {
-  padding: 48px 144px 323px 144px;
-
+  display: inline-grid;
+  align-items: center;
+  justify-content: center;
   .userData {
     padding-top: 56px;
     display: flex;
