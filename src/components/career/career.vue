@@ -2,13 +2,15 @@
 .career
   h1.mb-2 Career Goal
   div.container
-    p Your Progress
-    VProgressCircular(:rotate="360"
-      :size="100"
+    h6.mb-6 Your Progress
+    VProgressCircular.mb-6(
+      :rotate="360"
       :width="15"
-      :model-value="progress"
-      color="teal")
+      :model-value="progress")
       p {{ progress }}
+    p.meta I want to become a
+    h4.mb-6 {{ careerName }}
+    h6.insightsBtn View Insights
 </template>
 
 <script lang="ts" setup>
@@ -17,10 +19,13 @@ import { useCareerGoal } from "@/store/career";
 
 const careerGoalStore: any = useCareerGoal();
 let progress = ref("");
+let careerName = ref("");
 
 watchEffect(() => {
   if (careerGoalStore.careerGoalData.length) {
-    progress.value = careerGoalStore.careerGoalData[0].progress + "%";
+    const data = careerGoalStore.careerGoalData[0];
+    progress.value = data.progress + "%";
+    careerName.value = data.name;
   }
 });
 
@@ -36,7 +41,6 @@ watchEffect(() => {
     padding: 32px 40px;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
     flex: 1 0 0;
     align-self: stretch;
 
@@ -49,14 +53,31 @@ watchEffect(() => {
       }
       .v-progress-circular__overlay {
         stroke-linecap: round;
-        stroke: $purple-p-50;
+        stroke: $primary-p-50;
       }
 
       .v-progress-circular__content {
-        color: $purple-p-70;
-        font-size: 28px;
-        font-weight: 700;
-        line-height: 44px;
+        p {
+          color: $purple-p-70;
+          font-size: 28px !important;
+          font-weight: 700 !important;
+          line-height: 44px !important;
+        }
+      }
+    }
+
+    .insightsBtn {
+      cursor: pointer;
+      color: $primary-p-50 !important;
+      padding-bottom: 13px;
+
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 24px;
+
+      &:hover {
+        transition: 0.5s;
+        color: $purple-p-70 !important;
       }
     }
   }

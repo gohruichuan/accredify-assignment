@@ -1,6 +1,6 @@
 <template lang="pug">
 VContainer.home
-  h1.mb-2 Hi, {{profileStore.name}} 👋
+  h2.mb-2 Hi, {{profileStore.name}} 👋
   p Manage your documents issued by SMU Academy or track your career goal.
   .userData
     Career

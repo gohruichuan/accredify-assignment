@@ -8,7 +8,7 @@ div.text-center
         append-icon="mdi-chevron-down")
         div.profileImg
           p GG
-        p.username.ml-2 {{profileStore.name}}
+        p.username.meta.ml-2 {{profileStore.name}}
     VCard.profileCard
       VList.profileList
         div.profileImg.large
@@ -45,20 +45,47 @@ const logout = () => {
     display: flex;
     align-items: center;
   }
+
+  .v-list-item-title {
+    color: $primary-n-80;
+    /* Heading Five (16) */
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+  .v-list-item-subtitle {
+    color: $neutral-n-60;
+    /* Meta (14) */
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  .v-btn__content,
+  .mdi-logout {
+    color: $neutral-n-60;
+
+    /* Meta (14) */
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+  }
 }
 
 .profileImg {
   background-color: $primary-p-50;
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  color: $white;
-  text-align: center;
   line-height: 25px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  p {
+    color: $white !important;
+  }
   &.large {
     width: 48px !important;
     height: 48px !important;
-    display: flex;
     align-items: center;
     justify-content: center;
   }

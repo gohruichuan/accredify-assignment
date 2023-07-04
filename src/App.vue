@@ -32,6 +32,43 @@ const isLoggedIn = computed(() => profileStore.isLoggedIn);
     background: $white;
     z-index: 1;
   }
+
+  .meta {
+    color: $primary-n-80;
+    /* Meta (14px) */
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  p {
+    color: $neutral-n-60;
+    /* Paragraph (16 px) */
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  h2 {
+    /* Heading 2 (28px) */
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 44px;
+  }
+  h4 {
+    /* Heading 4 (20px) */
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 32px;
+  }
+
+  h6 {
+    color: $neutral-n-60;
+    /* Heading 6 (14px) */
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+  }
 }
 
 * {
