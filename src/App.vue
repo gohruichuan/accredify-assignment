@@ -1,6 +1,5 @@
 <template lang="pug">
 VApp
-  Login(v-if="!isLoggedIn")
   Sidebar
   VMain
     Header
@@ -12,7 +11,6 @@ VApp
 import { computed } from "vue";
 import Sidebar from "@/components/Sidebar.vue";
 import Header from "@/components/header/Header.vue";
-import Login from "@/views/Login.vue";
 
 import { useProfileStore } from "@/store/profile";
 

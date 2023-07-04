@@ -61,6 +61,7 @@ export const useProfileStore = defineStore('profile', {
     },
     logout(){
       this.clearProfileDetails()
+      window.location.href = '/login'
     },
   }
 })

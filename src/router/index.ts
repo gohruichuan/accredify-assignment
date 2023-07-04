@@ -27,6 +27,8 @@ const router = createRouter({
 })
 
 router.beforeResolve(async (to) => {
+  console.warn("to ", to);
+
 const profileStore = useProfileStore();
 
 if(localStorage.getItem('jwtToken'))
@@ -35,9 +37,10 @@ else
   profileStore.clearProfileDetails()
 
 // redirect to dashboard if ALREADY logged in
-if(to.path === '/login' && profileStore.isLoggedIn){
+if(to.path === '/login' && to.meta.requiresAuth && profileStore.isLoggedIn){
   return '/'
-}
+}else if(to.meta.requiresAuth && !profileStore.isLoggedIn) return '/login'
+
 })
 
 export default router
