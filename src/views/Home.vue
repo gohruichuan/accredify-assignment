@@ -9,7 +9,7 @@ VContainer.home
 
 <script lang="ts" setup>
 import { useProfileStore } from "@/store/profile";
-import Career from "@/components/career/career.vue";
+import Career from "@/components/career/Career.vue";
 
 const profileStore = useProfileStore();
 </script>

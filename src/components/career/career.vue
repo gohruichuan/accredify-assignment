@@ -3,10 +3,8 @@
   h1.mb-2 Career Goal
   div.container
     h6.mb-6 Your Progress
-    VProgressCircular.mb-6(
-      :rotate="360"
-      :width="15"
-      :model-value="progress")
+    CircleProgress.mb-6(
+      :progress="progress")
       p {{ progress }}
     p.meta I want to become a
     h4.mb-6 {{ careerName }}
@@ -15,6 +13,7 @@
 
 <script lang="ts" setup>
 import { ref, watchEffect } from "vue";
+import CircleProgress from "@/components/career/CircleProgress.vue";
 import { useCareerGoal } from "@/store/career";
 
 const careerGoalStore: any = useCareerGoal();
@@ -44,27 +43,27 @@ watchEffect(() => {
     flex: 1 0 0;
     align-self: stretch;
 
-    .v-progress-circular {
-      width: 180px !important;
-      height: 180px !important;
-      .v-progress-circular__underlay,
-      .v-progress-circular__overlay {
-        stroke-width: 3px;
-      }
-      .v-progress-circular__overlay {
-        stroke-linecap: round;
-        stroke: $primary-p-50;
-      }
+    // .v-progress-circular {
+    //   width: 180px !important;
+    //   height: 180px !important;
+    //   .v-progress-circular__underlay,
+    //   .v-progress-circular__overlay {
+    //     stroke-width: 3px;
+    //   }
+    //   .v-progress-circular__overlay {
+    //     stroke-linecap: round;
+    //     stroke: $primary-p-50;
+    //   }
 
-      .v-progress-circular__content {
-        p {
-          color: $purple-p-70;
-          font-size: 28px !important;
-          font-weight: 700 !important;
-          line-height: 44px !important;
-        }
-      }
-    }
+    //   .v-progress-circular__content {
+    //     p {
+    //       color: $purple-p-70;
+    //       font-size: 28px !important;
+    //       font-weight: 700 !important;
+    //       line-height: 44px !important;
+    //     }
+    //   }
+    // }
 
     .insightsBtn {
       cursor: pointer;

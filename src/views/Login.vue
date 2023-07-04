@@ -47,7 +47,9 @@ onMounted(() => {
   text-align: center;
   .loginBtn {
     background: $primary-n-80;
-    color: $white;
+    p {
+      color: $white !important;
+    }
   }
 
   .logo {
