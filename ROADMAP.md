@@ -9,8 +9,9 @@ Frontend:
 - Hide side bar and profile into a burger menu
 - Streamline Career Goals and Documents component into mobile view
 3) Login credentials to have password
-4) Cloudflare protection from DDOS
-5) Load balancer if appliation has more users
+4) Unit testing with JEST
+5) Cloudflare protection from DDOS
+6) Load balancer if appliation has more users
 ```
 
 ```
