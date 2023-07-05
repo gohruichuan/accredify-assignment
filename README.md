@@ -58,7 +58,7 @@ App
 
 # Backend Nodejs API
 
-See [Nodejs repo here](https://github.com/gohruichuan/api-accredify-assignment).
+See [Nodejs repo here](https://github.com/gohruichuan/api-accredify).
 
 ## API Architecture
 
